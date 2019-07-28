@@ -10,6 +10,7 @@ import java.sql.Timestamp;
 public class Tweet {
     public  String body;
     public long uid;
+
     public String createdAt;
     public  User user;
     public String getFormattedTimestamp;
