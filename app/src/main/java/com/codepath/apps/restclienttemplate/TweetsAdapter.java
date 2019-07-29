@@ -1,6 +1,7 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -22,6 +23,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
 
     private Context context;
     private List<Tweet> tweets;
+   // RecyclerView container;
 
     // pass in context and list of tweets
 
@@ -48,8 +50,8 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         GlideApp.with(context).load(tweet.user.profileImageUrl)
                 .transform(new CircleCrop())
                 .into(holder.ivProfileImage);
-
     }
+
 
     @Override
     public int getItemCount() {
@@ -85,5 +87,6 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
            tvName = itemView.findViewById(R.id.tvName);
            tvDate = itemView.findViewById(R.id.tvDate);
         }
+
     }
 }
