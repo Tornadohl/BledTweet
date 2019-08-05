@@ -1,9 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".DetailActivity">
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp">
 
-</android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:id="@+id/ivProfileImage2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvScreenName2"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_below="@id/tvName2"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_toRightOf="@id/ivProfileImage2"
+        tools:text="Tornadohl" />
+
+    <TextView
+        android:id="@+id/tvBody2"
+        android:layout_width="117dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvScreenName2"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_toRightOf="@id/ivProfileImage2"
+        android:autoLink="all"
+        android:linksClickable="true"
+        android:textColor="#050505"
+        android:textColorLink="#219CFD"
+        tools:text="Cogito ergo sum" />
+
+    <TextView
+        android:id="@+id/tvName2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@id/ivProfileImage2"
+        android:textColor="#050505"
+        android:textStyle="bold"
+        tools:text="Bled the Tornado" />
+
+    <TextView
+        android:id="@+id/tvDate2"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvBody2"
+        tools:text="time" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/tvBody2"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="?android:attr/listDivider" />
+
+</RelativeLayout>

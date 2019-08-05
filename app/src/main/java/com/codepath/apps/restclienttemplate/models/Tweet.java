@@ -4,9 +4,10 @@ import com.codepath.apps.restclienttemplate.TimeFormatter;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcel;
 
 import java.sql.Timestamp;
-
+@Parcel
 public class Tweet {
     public  String body;
     public long uid;
@@ -14,6 +15,11 @@ public class Tweet {
     public String createdAt;
     public  User user;
     public String getFormattedTimestamp;
+
+    // Empty constructor needed by Parceler library
+    public Tweet() {
+
+    }
 
     public static  Tweet fromJson(JSONObject jsonObject) throws JSONException {
         Tweet tweet = new Tweet();

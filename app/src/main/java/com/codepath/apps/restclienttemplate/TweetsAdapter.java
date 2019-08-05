@@ -8,11 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.codepath.apps.restclienttemplate.models.Tweet;
+
+import org.parceler.Parcels;
 
 import java.sql.Timestamp;
 import java.text.BreakIterator;
@@ -20,7 +23,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder>{
-
     private Context context;
     private List<Tweet> tweets;
    // RecyclerView container;
@@ -42,14 +44,25 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
     // bind values based on the on the position of the element
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Tweet tweet = tweets.get(position);
+        final Tweet tweet = tweets.get(position);
         holder.tvBody.setText(tweet.body);
         holder.tvScreenName.setText("@"+tweet.user.screenName);
         holder.tvName.setText(tweet.user.name);
         holder.tvDate.setText(tweet.getFormattedTimestamp);
         GlideApp.with(context).load(tweet.user.profileImageUrl)
-                .transform(new CircleCrop())
+                .circleCrop()
                 .into(holder.ivProfileImage);
+
+
+        holder.container.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Tweet tweet = new Tweet();
+                Intent i = new Intent(context, DetailActivity.class);
+                i.putExtra("tweet", Parcels.wrap(tweet));
+                context.startActivity(i);
+            }
+        });
     }
 
 
@@ -78,6 +91,8 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         public TextView tvBody;
         public TextView tvName;
         public TextView tvDate;
+        public RelativeLayout container;
+        public ImageView ivtToolbar;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -86,6 +101,9 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
            tvBody = itemView.findViewById(R.id.tvBody);
            tvName = itemView.findViewById(R.id.tvName);
            tvDate = itemView.findViewById(R.id.tvDate);
+           container = itemView.findViewById(R.id.container);
+           ivtToolbar =itemView.findViewById(R.id.ivtToolbar);
+
         }
 
     }
